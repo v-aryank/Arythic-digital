@@ -26,6 +26,19 @@ const Navbar = () => {
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     setIsMobileMenuOpen(false);
 
+    if (href === "/" || href === "/#hero") {
+      if (location.pathname === "/") {
+        e.preventDefault();
+        if ((window as any).lenis) {
+          (window as any).lenis.scrollTo(0, { duration: 1.5 });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        navigate("/");
+      }
+      return;
+    }
+
     if (href.includes("#")) {
       const [path, hash] = href.startsWith("/") ? href.split("#") : ["/", href.replace("#", "")];
 
@@ -54,8 +67,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link
-            to="/#hero"
-            onClick={(e) => handleNavClick(e, "/#hero")}
+            to="/"
+            onClick={(e) => handleNavClick(e, "/")}
             className="flex items-center gap-2"
           >
             <span className="text-2xl font-bold font-display gradient-text">
