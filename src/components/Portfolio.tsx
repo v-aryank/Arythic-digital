@@ -25,15 +25,13 @@ const portfolioItems = [
 
 const teamMembers = [
   {
-    name: "V. Aryan Kabir",
-    role: "CEO & Founder",
-    power: "Strategic Vision & Leadership",
+    name: "CEO & Founder",
+    role: "Strategic Vision & Leadership",
     description: "Driving innovation and setting the direction for Arythic's growth and impact.",
   },
   {
-    name: "A. Aritro",
-    role: "Technical Lead",
-    power: "Technical Excellence & Quality Delivery",
+    name: "Technical Lead",
+    role: "Technical Excellence & Quality Delivery",
     description: "Leading technical excellence and ensuring quality delivery.",
   },
   {
@@ -72,7 +70,7 @@ const Portfolio = () => {
                 className="group relative p-8 rounded-2xl border border-border/30 bg-card/50 hover:border-primary/40 transition-all duration-500 overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
-                
+
                 <span className="text-xs font-medium text-primary uppercase tracking-wider">
                   {item.category}
                 </span>
