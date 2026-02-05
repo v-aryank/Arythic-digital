@@ -1,26 +1,103 @@
-import { ExternalLink, Linkedin, Power, Twitter } from "lucide-react";
+import { ExternalLink, Linkedin, Twitter, Globe, ShoppingBag, Smartphone, Search, ArrowRight } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
-const portfolioItems = [
+const portfolioSegments = [
   {
-    title: "E-Commerce Platform",
-    category: "Web Development",
-    description: "Full-stack e-commerce solution with payment integration",
+    title: "Web Projects",
+    id: "web-dev",
+    description: "Modern, responsive, and high-performance websites built with cutting-edge technologies.",
+    icon: <Globe className="w-8 h-8 text-primary" />,
+    projects: [
+      {
+        name: "VIRO-Proto",
+        description: "A personal AI Observation & Experimentation tool. A research-oriented web prototype focused on intelligent system behavior, interaction models, and experimental digital interfaces.",
+        link: "https://viro-proto.vercel.app/", // Placeholder link
+        tech: ["React", "TypeScript", "Vite"],
+      },
+      // add more projects here
+
+      /*{
+        name: "Enterprise Dashboard",
+        description: "Comprehensive analytics platform for enterprise data management and real-time visualization.",
+        link: "#",
+        tech: ["Next.js", "Tailwind", "D3.js"],
+      },
+      {
+        name: "SaaS Marketing Site",
+        description: "High-conversion landing page with optimized performance and SEO for a leading SaaS provider.",
+        link: "#",
+        tech: ["Astro", "React", "Framermotion"],
+      }*/
+
+    ]
   },
   {
-    title: "SaaS Dashboard",
-    category: "UI/UX Design",
-    description: "Analytics dashboard for enterprise clients",
+    title: "E-commerce platform",
+    id: "ecommerce",
+    description: "Seamless online shopping experiences with robust payment integrations and inventory systems.",
+    icon: <ShoppingBag className="w-8 h-8 text-primary" />,
+    projects: [
+      /*{
+        name: "Global-Mart Engine",
+        description: "Scalable e-commerce engine with multi-vendor support and automated shipping calculations.",
+        link: "#",
+        tech: ["Node.js", "PostgreSQL", "Stripe"],
+      },
+      {
+        name: "Artisan Marketplace",
+        description: "Bespoke platform for local artisans to showcase and sell their unique creations globally.",
+        link: "#",
+        tech: ["Shopify", "Liquid", "Custom Apps"],
+      }*/
+    ]
   },
   {
-    title: "Mobile App Backend",
-    category: "API Development",
-    description: "Scalable backend infrastructure for mobile applications",
+    title: "Mobile Applications",
+    id: "mobile-apps",
+    description: "Intuitive mobile applications delivering seamless user experiences across iOS and Android.",
+    icon: <Smartphone className="w-8 h-8 text-primary" />,
+    projects: [
+      {
+        name: "Arythic Connect",
+        description: "Community-driven mobile app for networking, resource sharing, and professional growth.",
+        link: "#",
+        tech: ["React Native", "Firebase", "Expo"],
+      },
+      {
+        name: "HealthTrack Pro",
+        description: "Health and wellness monitoring app with wearable integration and AI-driven insights.",
+        link: "#",
+        tech: ["Flutter", "Dart", "HealthKit"],
+      }
+    ]
   },
   {
-    title: "Research Portal",
-    category: "Web Application",
-    description: "Academic research management and publication platform",
-  },
+    title: "Research Portals",
+    id: "research-portal",
+    description: "Advanced platforms designed for knowledge sharing, academic collaboration, and data-driven insights.",
+    icon: <Search className="w-8 h-8 text-primary" />,
+    projects: [
+      {
+        name: "Arythic Research Lab",
+        description: "Centralized management system for academic publications, research data, and peer review processes.",
+        link: "#",
+        tech: ["React", "Elasticsearch"],
+      },
+      /*{
+        name: "Bio-Discovery Lab",
+        description: "Data-heavy portal for biological research analysis, genome sequencing, and visual modeling.",
+        link: "#",
+        tech: ["Python", "Vue.js", "GraphQL"],
+      }*/
+    ]
+  }
 ];
 
 const teamMembers = [
@@ -56,34 +133,84 @@ const Portfolio = () => {
               Our Work
             </span>
             <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">
-              Featured <span className="gradient-text">Projects</span>
+              Expertise <span className="gradient-text">Segments</span>
             </h2>
             <p className="text-muted-foreground text-lg">
-              A showcase of our recent work delivering impactful digital solutions.
+              Explore our diverse range of digital solutions across multiple industry segments.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {portfolioItems.map((item, index) => (
-              <div
-                key={item.title}
-                className="group relative p-8 rounded-2xl border border-border/30 bg-card/50 hover:border-primary/40 transition-all duration-500 overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {portfolioSegments.map((segment) => (
+              <Sheet key={segment.id}>
+                <SheetTrigger asChild>
+                  <button className="group relative p-8 rounded-2xl border border-border/30 bg-card/50 hover:border-primary/40 transition-all duration-500 overflow-hidden text-left w-full cursor-pointer hover:shadow-2xl hover:shadow-primary/5">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
 
-                <span className="text-xs font-medium text-primary uppercase tracking-wider">
-                  {item.category}
-                </span>
-                <h3 className="text-2xl font-semibold font-display mt-2 mb-3 text-foreground">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  {item.description}
-                </p>
-                <button className="flex items-center gap-2 text-primary hover:gap-3 transition-all duration-300 text-sm font-medium">
-                  View Project <ExternalLink size={14} />
-                </button>
-              </div>
+                    <div className="mb-6 inline-flex p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
+                      {segment.icon}
+                    </div>
+
+                    <h3 className="text-xl font-semibold font-display mb-3 text-foreground group-hover:text-primary transition-colors">
+                      {segment.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm mb-6 line-clamp-2">
+                      {segment.description}
+                    </p>
+
+                    <span className="inline-flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all">
+                      View Projects <ArrowRight size={14} />
+                    </span>
+                  </button>
+                </SheetTrigger>
+
+                <SheetContent side="right" className="w-full sm:max-w-md bg-background/95 backdrop-blur-xl border-l border-primary/20 p-0">
+                  <div className="h-full flex flex-col">
+                    <SheetHeader className="p-8 border-b border-border/30 bg-card/30">
+                      <div className="mb-4 inline-flex p-3 rounded-xl bg-primary/10 text-primary w-fit">
+                        {segment.icon}
+                      </div>
+                      <SheetTitle className="text-2xl font-bold font-display">{segment.title}</SheetTitle>
+                      <SheetDescription className="text-base">
+                        {segment.description}
+                      </SheetDescription>
+                    </SheetHeader>
+
+                    <div className="flex-1 overflow-y-auto p-8 space-y-6">
+                      <h4 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">Developed Projects</h4>
+                      {segment.projects.map((project, idx) => (
+                        <div key={idx} className="p-6 rounded-xl border border-border/30 bg-card/30 hover:bg-card/50 transition-colors group/item">
+                          <h5 className="text-lg font-semibold mb-2 group-hover/item:text-primary transition-colors">{project.name}</h5>
+                          <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                            {project.description}
+                          </p>
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {project.tech.map((t) => (
+                              <span key={t} className="px-2 py-0.5 text-[10px] font-medium uppercase tracking-tighter rounded bg-secondary/50 text-secondary-foreground">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:underline"
+                          >
+                            Explore Live <ExternalLink size={14} />
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="p-8 border-t border-border/30 bg-card/30">
+                      <p className="text-xs text-muted-foreground text-center italic">
+                        Want to start a similar project? <a href="#contact" className="text-primary font-medium hover:underline">Get in touch</a>
+                      </p>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
             ))}
           </div>
         </div>
